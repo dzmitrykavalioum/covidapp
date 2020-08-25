@@ -1,0 +1,2 @@
+# covidapp
+simple android application
