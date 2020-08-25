@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        app:cardCornerRadius="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="70sp"
+                android:layout_height="match_parent"
+                android:id="@+id/tv_position"
+                android:textSize="40sp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"/>
+
+            <ImageView
+                android:id="@+id/iv_country"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:visibility="invisible"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_country_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/iv_country"
+                android:layout_alignParentTop="true"
+                android:text="@string/country"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_country_cases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_country"
+                android:layout_alignParentBottom="true"
+                android:text="@string/cases"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="25sp" />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
