@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dzmitrykavalioum.covidapp.MainActivity;
 import com.dzmitrykavalioum.covidapp.R;
 import com.dzmitrykavalioum.covidapp.adapters.CountriesRvAdapter;
 import com.dzmitrykavalioum.covidapp.model.Country;
@@ -50,7 +51,12 @@ public class CountriesFragment extends Fragment  implements  CountriesContract.V
         countryPresenter = new CountryPresenter(this);
         layoutManager = new LinearLayoutManager(root.getContext());
         itemAnimator = new DefaultItemAnimator();
+        if (getActivity() instanceof  MainActivity){
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle("Countries");
+        }
         countryPresenter.getCountries();
+        //((MainActivity)getActivity()).setTitle("Countries");
+
 
 
 

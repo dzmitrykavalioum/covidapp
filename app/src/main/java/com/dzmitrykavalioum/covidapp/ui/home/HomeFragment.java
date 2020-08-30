@@ -1,5 +1,6 @@
 package com.dzmitrykavalioum.covidapp.ui.home;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.dzmitrykavalioum.covidapp.MainActivity;
 import com.dzmitrykavalioum.covidapp.R;
 import com.dzmitrykavalioum.covidapp.model.Total;
 
@@ -21,9 +23,9 @@ public class HomeFragment extends Fragment implements TotalContract.ViewContract
 
     private HomeViewModel homeViewModel;
     private TotalPresenter totalPresenter;
-    private  TextView tv_cases;
-    private  TextView tv_deaths;
-    private  TextView tv_recovered;
+    private TextView tv_cases;
+    private TextView tv_deaths;
+    private TextView tv_recovered;
     private ProgressBar pb_total;
 
 
@@ -36,6 +38,9 @@ public class HomeFragment extends Fragment implements TotalContract.ViewContract
         tv_deaths = root.findViewById(R.id.tv_total_deaths);
         tv_recovered = root.findViewById(R.id.tv_total_recovered);
         pb_total = root.findViewById(R.id.pb_total);
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).getSupportActionBar().setTitle("All");
+        }
         totalPresenter = new TotalPresenter(this);
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 //            @Override
@@ -43,15 +48,17 @@ public class HomeFragment extends Fragment implements TotalContract.ViewContract
 //                textView.setText(s);
 //            }
 //        });
+
         totalPresenter.getTotal();
         return root;
     }
 
     @Override
     public void showTotal(Total total) {
-        tv_cases.setText("Cases "+total.getCases().toString());
-        tv_deaths.setText("Deaths "+total.getDeaths().toString());
-        tv_recovered.setText("Recovered "+total.getRecovered().toString());
+
+        tv_cases.setText("Cases " + total.getCases().toString());
+        tv_deaths.setText("Deaths " + total.getDeaths().toString());
+        tv_recovered.setText("Recovered " + total.getRecovered().toString());
 
     }
 
@@ -67,6 +74,8 @@ public class HomeFragment extends Fragment implements TotalContract.ViewContract
 
     @Override
     public void showError(String message) {
-        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
+
+
 }
